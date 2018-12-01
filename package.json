@@ -1,0 +1,10 @@
+{
+  "name": "playground",
+  "version": "1.0.0",
+  "scripts": {
+    "run": "nodemon test.js"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
