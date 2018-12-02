@@ -1,27 +1,27 @@
+
 const os = require('os');
 const fs = require('fs');
 
 const calculate = function (ids) {
-    for (let i = 0; i < ids.length - 1; i++) {
+    let noOfLettersTwice = 0;
+    let noOfLettersThrice = 0;
+    for (let i = 0; i < ids.length; i++) {
         const id = ids[i];
-        for (let j = i + 1; j < ids.length; j++) {
-            let noOfDifferences = 0;
-            let idWithoutDifference = '';
-            for (let y = 0; y < id.length; y++) {
-                if (id[y] !== ids[j][y]) {
-                    noOfDifferences++;
-                    if (noOfDifferences > 1) {
-                        break;
-                    }
-                } else {
-                    idWithoutDifference += id[y];
-                }
-            }
-            if (noOfDifferences === 1) {
-                return idWithoutDifference;
-            }
+        const map = new Map();
+        for (let j = 0; j < id.length; j++) {
+            const key = id[j];
+            const currentCount = map.get(key) || 0;
+            map.set(key, currentCount + 1);
+        }
+        const counts = Array.from(map.values()).filter(x => x === 2 || x === 3);
+        if (counts.some(x => x === 2)) {
+            noOfLettersTwice++;
+        }
+        if (counts.some(x => x === 3)) {
+            noOfLettersThrice++;
         }
     }
+    return noOfLettersTwice * noOfLettersThrice;
 };
 
 
@@ -42,16 +42,6 @@ function test(input, ex) {
 }
 
 console.time('A');
-test([
-    "abcde",
-    "fghij",
-    "klmno",
-    "pqrst",
-    "fguij",
-    "axcye",
-    "wvxyz"
-
-], 'fgij');
+test(['abcdef', 'bababc', 'abbcde', 'abcccd', 'aabcdd', 'abcdee', 'ababab'], 12);
 main();
 console.timeEnd('A');
-
