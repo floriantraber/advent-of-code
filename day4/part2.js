@@ -74,7 +74,7 @@ function main() {
   console.log('RESULT', result);
 }
 
-function test(input, ex) {
+function part2(input, ex) {
   const result = calculate(input);
   if (result != ex && JSON.stringify(result) != JSON.stringify(ex)) {
     throw `expected ${ex} doesn't equals result: ${result}` + ' for input: ' + input;
@@ -83,7 +83,7 @@ function test(input, ex) {
 }
 
 console.time('A');
-test([
+part2([
   '[1518-11-01 00:00] Guard #10 begins shift',
   '[1518-11-01 00:05] falls asleep',
   '[1518-11-01 00:25] wakes up',
