@@ -23,14 +23,12 @@ function shorten(input) {
 const calculate = function (input) {
   input = shorten(input);
   let shortest = input.length;
-  console.log(shortest);
   const abc = 'abcdefghijklmnopqrstuvwxyz';
   for (let i = 0; i < abc.length; i++) {
     const inputTemp = input.replace(new RegExp(abc[i], 'gi'), '');
     const resultTemp = shorten(inputTemp);
     if (resultTemp.length < shortest) {
       shortest = resultTemp.length;
-      console.log(shortest);
     }
   }
   return shortest;
@@ -44,7 +42,7 @@ function main() {
   console.log('RESULT', result);
 }
 
-function test(input, ex) {
+function part2(input, ex) {
   const result = calculate(input);
   if (result != ex && JSON.stringify(result) != JSON.stringify(ex)) {
     throw `expected ${ex} doesn't equals result: ${result}` + ' for input: ' + input;
@@ -53,7 +51,7 @@ function test(input, ex) {
 }
 
 console.time('A');
-test('dabAcCaCBAcCcaDA', 4);
+part2('dabAcCaCBAcCcaDA', 4);
 main();
 console.timeEnd('A');
 

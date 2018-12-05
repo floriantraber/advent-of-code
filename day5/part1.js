@@ -1,7 +1,7 @@
 const os = require('os');
 const fs = require('fs');
 
-function shorten(input) {
+const calculate = function (input) {
   let changed = false;
   do {
     changed = false;
@@ -17,23 +17,7 @@ function shorten(input) {
       }
     }
   } while (changed);
-  return input;
-}
-
-const calculate = function (input) {
-  input = shorten(input);
-  let shortest = input.length;
-  console.log(shortest);
-  const abc = 'abcdefghijklmnopqrstuvwxyz';
-  for (let i = 0; i < abc.length; i++) {
-    const inputTemp = input.replace(new RegExp(abc[i], 'gi'), '');
-    const resultTemp = shorten(inputTemp);
-    if (resultTemp.length < shortest) {
-      shortest = resultTemp.length;
-      console.log(shortest);
-    }
-  }
-  return shortest;
+  return input.length;
 };
 
 
@@ -53,7 +37,7 @@ function test(input, ex) {
 }
 
 console.time('A');
-test('dabAcCaCBAcCcaDA', 4);
+test('dabAcCaCBAcCcaDA', 10);
 main();
 console.timeEnd('A');
 
