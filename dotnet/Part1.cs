@@ -1,30 +1,35 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.Serialization.Json;
+using System.Xml.Schema;
 using Xunit;
 
 namespace dotnet {
-    public class Day9Part1 {
-        public int Run(string input) {
+    public class Day10Part1 {
+        public int Run(int players, int lastMarblePoints) {
+            return 0;
         }
     }
 
-    public class Day9Part1Test {
+    public class Day10Part1Test {
         [Fact]
         public void TestWithTestData() {
-            var day = new Day9Part1();
+            var day = new Day10Part1();
 
-            var result = day.Run("2 3 0 3 10 11 12 1 1 0 1 99 2 1 1 2");
+            var result = day.Run(9, 25);
 
-            Assert.Equal(66, result);
+            Assert.Equal(32, result);
         }
+
 
         [Fact]
         public void TestWithRealInput() {
-            var day = new Day9Part1();
+            var day = new Day10Part1();
 
-            var result = day.Run("");
-            Assert.Equal(22989, result);
+            var result = day.Run(446, 71522);
+            Assert.Equal(390592, result);
         }
     }
 }
