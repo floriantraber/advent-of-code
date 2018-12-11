@@ -13,33 +13,31 @@ const calculate = function (input) {
       const powerLevelStr = powerLevel + '';
       powerLevel = +(powerLevelStr.substring(powerLevelStr.length - 3, powerLevelStr.length - 2));
       grid[x][y] = powerLevel - 5;
+      if (x === 217 && 196 === y) {
+        console.log('AA', grid[x][y], powerLevel);
+      }
+      // console.log(x, y, grid[x][y].powerLevel);
     }
   }
 
   let maxSquareValue = 0;
   let maxSquareX;
   let maxSquareY;
-  let squareVal = 0;
-  for (let x = 0; x < 300; x++) {
-    for (let y = 0; y < 300; y++) {
-      for (let square = 1; square < (300 - x) && square < (300 - y); square++) {
-        let val = 0;
-        for (let i = 0; i < square; i++) {
-          for (let a = 0; a < square; a++) {
-            val += grid[x + i][y + a];
-          }
-        }
-        if (val > maxSquareValue) {
-          maxSquareValue = val;
-          maxSquareX = x;
-          maxSquareY = y;
-          squareVal = square;
-        }
+  for (let x = 0; x < 298; x++) {
+    for (let y = 0; y < 298; y++) {
+      const val = grid[x][y] + grid[x][y + 1] + grid[x][y + 2]
+        + grid[x + 1][y] + grid[x + 1][y + 1] + grid[x + 1][y + 2]
+        + grid[x + 2][y] + grid[x + 2][y + 1] + grid[x + 2][y + 2];
+      if (val > maxSquareValue) {
+        maxSquareValue = val;
+        maxSquareX = x
+        maxSquareY = y;
+        console.log({ val, maxSquareY, maxSquareX });
       }
     }
   }
   console.log(grid[21][61]);
-  return maxSquareX + ',' + maxSquareY + ',' + squareVal;
+  return maxSquareX + ',' + maxSquareY;
 };
 
 
@@ -59,7 +57,7 @@ function test(input, ex) {
 }
 
 console.time('A');
-//test(18, '90,269,16');
-//test(42, '232,251,12');
+test(18, '33,45');
+test(42, '21,61');
 main();
 console.timeEnd('A');
