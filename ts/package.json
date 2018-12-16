@@ -1,0 +1,20 @@
+{
+  "name": "advent-of-code-ts",
+  "version": "1.0.0",
+  "scripts": {
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
+    "watch-node": "nodemon dist/main.js",
+    "watch-ts": "tsc -w"
+  },
+  "dependencies": {
+    "lodash": "4.17.11"
+  },
+  "devDependencies": {
+    "@types/lodash": "4.14.119",
+    "concurrently": "4.1.0",
+    "nodemon": "1.18.9",
+    "ts-node": "7.0.1",
+    "tslint": "5.11.0",
+    "typescript": "3.2.2"
+  }
+}
